@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180102020905) do
+ActiveRecord::Schema.define(version: 20180102022047) do
 
   create_table "authentications", force: :cascade do |t|
     t.string "uid"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20180102020905) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "description"
     t.index ["user_id"], name: "index_listings_on_user_id"
   end
 
