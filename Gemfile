@@ -13,6 +13,8 @@ gem 'sqlite3'
 gem 'figaro'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'faker'
+gem 'kaminari'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 gem 'jquery-rails'

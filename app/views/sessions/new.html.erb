@@ -4,3 +4,9 @@
   <%= render partial: '/sessions/form' %>
 
 </div>
+
+<h4>OR</h4>
+
+<% if !signed_in? %>
+  <%= link_to "Sign in with Facebook", "/auth/facebook" %>
+<% end %>

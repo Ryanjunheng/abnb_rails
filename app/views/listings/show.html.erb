@@ -1,0 +1,35 @@
+
+
+
+<h1><%= @current_listing.title %></h1>
+<p>Hosted by: <%= link_to @current_listing.user.name, user_path(@current_listing.user_id) %></p>
+<hr>
+<h4>Property type:</h4>
+<p><%= @current_listing.property_type %></p>
+<br>
+<h4>Address:</h4>
+<p><%= @current_listing.address %>, <%= @current_listing.zipcode %>, <%= @current_listing.city %>, <%= @current_listing.state %>, <%= @current_listing.country %>.</p>
+<br>
+<h4>About the place:</h4>
+<p><%= @current_listing.description %></p>
+<br>
+<h4>Number of room available:</h4>
+<p><%= @current_listing.number_of_room %></p>
+<br>
+<h4>Number of bed available:</h4>
+<p><%= @current_listing.number_of_bed %></p>
+<br>
+<h4>Guests accomodated:</h4>
+<p><%= @current_listing.number_of_guest %></p>
+<br>
+<h4>Price:</h4>
+<p><%= @current_listing.price %></p>
+
+<% if current_user.superadmin? %>
+	<% if @current_listing.verified? %>
+		<h3>This listing is verified!</h3>
+	<% else %>
+		<%= button_to "Verify", user_listing_path(@current_listing.user_id, @current_listing.id), method: :put %>
+	<% end %>
+<% end %>
+

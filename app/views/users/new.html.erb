@@ -9,7 +9,13 @@
     </div>
 
     <div class="other-links">
-      <%= link_to t(".sign_in"), sign_in_path %>
+      <h5>Have an account?  </h5><%= link_to t(".sign_in"), sign_in_path %>
     </div>
+
+    <h4>OR</h4>
   <% end %>
 </div>
+
+<% if !signed_in? %>
+  <%= link_to "Sign in with Facebook", "/auth/facebook" %>
+<% end %>

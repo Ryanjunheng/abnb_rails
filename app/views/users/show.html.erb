@@ -1,0 +1,20 @@
+<% if signed_in? %>
+  <p>Signed in as:<%= link_to current_user.name, user_path(current_user.id) %></p>
+  <%= button_to "Sign out", sign_out_path, method: :delete %>
+<% else %>
+  <%= link_to "Sign in", sign_in_path %>
+<% end %>
+<h1>This is your profile page</h1>
+<br>
+<h4>Name: <%= @user.name %></h4>
+<h4>Email: <%= @user.email %></h4>
+
+<% if @user.listings.count != 0 %>
+	<h3><%= link_to "View all your listings",  user_listings_path(@user.id) %></h3>
+<% else %>
+	<h3>You have no listing yet.</h3> 
+	<% if signed_in? && current_user.id == @user.id %>
+		<h3><%= link_to "Become a host today!", new_user_listing_path(current_user.id) %></h3>
+		<br>
+	<% end %>
+<% end %>

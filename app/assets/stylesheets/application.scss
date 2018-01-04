@@ -1,2 +1,21 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "home";
+
+body {
+	margin-top: 50px;
+}
+
+#brand {
+	font-family: 'Pacifico', cursive;
+	font-size: 30px;
+}
+
+.modal-btn {
+	cursor:pointer;
+}
+
+#sign-in-as {
+	position: relative;
+	top: 15px;
+}
