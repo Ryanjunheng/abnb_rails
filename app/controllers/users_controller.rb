@@ -15,7 +15,7 @@ class UsersController < Clearance::UsersController
 	end
 
 	def show 
-		
+		@booking = Booking.includes(:listing).where(user_id: current_user.id)
 	end 
 
 	def edit

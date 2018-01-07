@@ -8,9 +8,10 @@ Rails.application.routes.draw do
     resource :password,
       controller: "clearance/passwords",
       only: [:create, :edit, :update]
-    resources :listings
+    resources :listings do
+      resources :bookings, only: [:destroy, :create, :new]
+    end
   end
-
 
 
   get "/sign_in" => "clearance/sessions#new", as: "sign_in"

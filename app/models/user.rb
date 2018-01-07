@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
    has_many :authentications, dependent: :destroy
    has_many :listings, dependent: :destroy
+   has_many :bookings, dependent: :destroy
+
    
    mount_uploader :avatar, PhotoUploader
 

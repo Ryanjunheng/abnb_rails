@@ -1,0 +1,15 @@
+<h3>Book now!</h3>
+<br>
+<%= form_for @booking, url: "/users/#{@current_listing.user_id}/listings/#{@current_listing.id}/bookings" do |f| %>
+	<%= f.hidden_field :user_id, value: current_user.id %>
+	<%= f.hidden_field :listing_id, value: @current_listing.id %>
+	<p>Number of guest? <%= f.select :num_guest, options_for_select([1,2,3,4,5,6,7,8,9,10])%></p>
+
+	
+	<p>Check in date: <%= f.date_field :start_date %></p>
+
+	<p>Check out: <%= f.date_field :end_date %></p>
+
+	<%= f.submit "Submit booking" %>
+
+<% end %>

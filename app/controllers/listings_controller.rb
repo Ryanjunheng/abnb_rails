@@ -22,6 +22,7 @@ class ListingsController < ApplicationController
 
 	def show
 		@current_listing = Listing.find_by(user_id: params[:user_id], id: params[:id])
+		
 	end
 
 	def edit

@@ -48,10 +48,12 @@
 
 <br>
 
+
 <% if signed_in? %>
   <% if current_user.id == @current_listing.user_id %>
     <%= link_to "Edit", edit_user_listing_path(current_user.id, @current_listing.id), class:"btn btn-primary" %>
   <% end %>
+  <%= link_to "Book", new_user_listing_booking_path(@current_listing.user_id, @current_listing.id), class:"btn btn-primary" %>
 <% end %>
 
 <h1><%= @current_listing.title %></h1>

@@ -18,3 +18,30 @@
 		<br>
 	<% end %>
 <% end %>
+<% if signed_in? %>
+	<% if current_user.id == @user.id %>
+	<hr>
+	<h2>Booking:</h2>
+	<% if current_user.bookings != [] %>
+	    <table>
+	      <tr>
+	      	<th>Listing</th>
+	        <th>Number of guests</th>
+	        <th>Check in date</th>
+	        <th>Check in date</th>
+	      </tr>
+	      <% @booking.each do |b| %>
+	        <tr>
+	        	<td><%= link_to b.listing.title, user_listing_path(b.listing.user_id, b.listing_id) %></td>
+	          <td><%= b.num_guest %></td>
+	          <td><%= b.start_date %></td>
+	          <td><%= b.end_date %></td>
+	          <td><%= link_to "Cancel Booking", user_listing_booking_path(b.user_id, b.listing_id, b.id), method: :delete, data: { confirm: 'Sure? This action cannot be reverted!' } %></td>
+	        </tr>
+	      <% end %>
+	    </table>
+	  <% else %>
+	    <p>No reservation has been made yet</p>
+	  <% end %>
+	<% end %>
+<% end %>
