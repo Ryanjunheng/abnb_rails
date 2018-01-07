@@ -1,0 +1,13 @@
+
+
+<h1>Edit listings here</h1>
+
+<%= form_for [current_user, @current_listing], url: "/users/#{@current_listing.user_id}/listings/#{@current_listing.id}/update", method: :post do |f| %>
+
+    <%= render partial: "/listings/form", object: f %>
+    
+    <%= f.submit 'Edit' %>
+<% end %>
+
+
+    

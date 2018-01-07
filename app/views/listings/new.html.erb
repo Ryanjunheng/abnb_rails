@@ -2,21 +2,10 @@
 
 <h1>Create new listings here!</h1>
 
-<%= form_tag user_listings_path do%>
-    <p>What is the name of your place? <%= text_field_tag 'listing[title]', '', placeholder: 'Place\'s name'%></p>
-    <p>What is the type of the property?(Please choose the closest possible) <%= select_tag 'listing[property_type]', options_for_select(["House","Entire floor","Condominium","Villa","Townhouse","Castle","Treehouse","Igloo","Yurt","Cave","Chalet","Hut","Tent"]) %></p>
-    <p>Tell us more about your place <%= text_area_tag 'listing[description]', '', placeholder: 'Description of your place' , rows: 5, cols: 100%></p>
-    <p>How many rooms <%= select_tag 'listing[number_of_room]', options_for_select([1,2,3,4,5,6,7,8,9,10])%></p>
-    <p>How many beds? <%= select_tag 'listing[number_of_bed]', options_for_select([1,2,3,4,5,6,7,8,9,10])%></p>
-    <p>Suitable for how many guests? <%= select_tag 'listing[number_of_guest]', options_for_select([1,2,3,4,5,6,7,8,9,10,11,12])%></p>
-    <p>Where is your place located? <%= text_area_tag 'listing[address]', '', placeholder: 'Address' , rows: 1, cols: 100%></p>
-    <p>Zipcode? <%= text_field_tag 'listing[zipcode]', '', placeholder: 'e.g: 43300' %></p>
-    <p>City? <%= text_field_tag 'listing[city]', '', placeholder: 'City' %></p>
-    <p>State? <%= text_field_tag 'listing[state]', '', placeholder: 'State' %></p>
-    <p>Country? <%= text_field_tag 'listing[country]', '', placeholder: 'Country' %></p>
-   
-    <p>What is your listing price? <%= text_field_tag 'listing[price]', '', placeholder: 'Price' %></p>
+<%= form_for @current_listing, url: user_listings_path(current_user.id) do |f| %>
+    
+    <%= render partial: "/listings/form", object: f %>
      
     
-    <%= submit_tag 'Submit' %>
+    <%= f.submit 'Submit' %>
 <% end %>

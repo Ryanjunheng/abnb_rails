@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180103063027) do
+ActiveRecord::Schema.define(version: 20180105065316) do
 
   create_table "authentications", force: :cascade do |t|
     t.string "uid"
@@ -22,37 +22,10 @@ ActiveRecord::Schema.define(version: 20180103063027) do
     t.index ["user_id"], name: "index_authentications_on_user_id"
   end
 
-  create_table "listings", force: :cascade do |t|
-    t.string "title"
-    t.string "address"
-    t.string "description"
-    t.string "property_type"
-    t.string "zipcode"
-    t.string "city"
-    t.string "state"
-    t.string "country"
-    t.integer "number_of_bed"
-    t.integer "number_of_guest"
-    t.integer "number_of_room"
-    t.integer "price"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "status", default: 0
-    t.index ["user_id"], name: "index_listings_on_user_id"
-  end
+# Could not dump table "listings" because of following StandardError
+#   Unknown type 'json' for column 'photos'
 
-  create_table "users", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "name"
-    t.string "email", null: false
-    t.string "encrypted_password", limit: 128
-    t.string "confirmation_token", limit: 128
-    t.string "remember_token", limit: 128, null: false
-    t.integer "role", default: 0
-    t.index ["email"], name: "index_users_on_email"
-    t.index ["remember_token"], name: "index_users_on_remember_token"
-  end
+# Could not dump table "users" because of following StandardError
+#   Unknown type 'json' for column 'avatar'
 
 end

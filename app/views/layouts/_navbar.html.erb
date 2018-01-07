@@ -9,7 +9,7 @@
         <li><a class="modal-btn" data-toggle="modal" data-target="#signupModal" ><span class="glyphicon glyphicon-user"></span> Sign-up</a>
         <li><a class="modal-btn" data-toggle="modal" data-target="#loginModal" ><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
       <% else %>
-        <li id="sign-in-as">Signed in as: <%= current_user.name %></li>
+        <li id="sign-in-as">Signed in as: &nbsp;<%= image_tag current_user.avatar.profile %>&nbsp;&nbsp;<%= current_user.name %></li>
         <li><%= link_to raw('<i class="fa fa-user-circle"></i> Profile'), user_path(current_user.id)  %></li>
         <li><%= link_to raw('<i class="fa fa-building-o"></i> Become a host'), new_user_listing_path(current_user.id) %></li>
         <li><%= link_to raw('<i class="fa fa-sign-out"></i> Sign Out'), sign_out_path, method: :delete %></li>

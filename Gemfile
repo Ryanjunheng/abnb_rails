@@ -15,6 +15,9 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'faker'
 gem 'kaminari'
+gem 'carrierwave', '~> 1.0'
+gem "mini_magick"
+gem 'fog'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 gem 'jquery-rails'

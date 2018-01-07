@@ -4,22 +4,13 @@
 <hr>
 <h3>Listing feed</h3>
 <br>
-<% if @listing_page == 1 %>
+
 	<% @listing_feed.each_with_index do |l, ind| %>	
-		<h4>#<%= ind + 1 %>&nbsp;&nbsp;<%= link_to l.title, user_listing_path(l.user_id, l.id) %></h4>
+		<h4><%= link_to l.title, user_listing_path(l.user_id, l.id) %></h4>
 		<p>Hosted by: <%= link_to l.user.name, user_path(l.user_id) %>
 		<br>
 		<hr>
 	<% end %>
-<% elsif @listing_page > 1 %>
-	<% index_start_number_1 = @draft_page * 20 %>
-	<% @listing_feed.each_with_index do |l, ind| %>	
-		<h4>#<%= (ind + 1) + index_start_number_2 %>&nbsp;&nbsp;<%= link_to l.title, user_listing_path(l.user_id, l.id) %></h4>
-		<p>Hosted by: <%= link_to l.user.name, user_path(l.user_id) %>
-		<br>
-		<hr>
-	<% end %>
-<% end %>
 
 
 <p><%= paginate @listing_feed, param_name: :listing_page %></p>
@@ -29,22 +20,13 @@
 	<% if current_user.superadmin? %>
 		<h3>Draft listing awaiting approval</h3>
 		<br>
-			<% if @draft_page == 1 %>
 				<% @draft_feed.each_with_index do |l, ind| %>
-					<h4>#<%= ind + 1 %>&nbsp;&nbsp;<%= link_to l.title, user_listing_path(l.user_id, l.id) %></h4>
+					<h4><%= link_to l.title, user_listing_path(l.user_id, l.id) %></h4>
 					<p>Hosted by: <%= link_to l.user.name, user_path(l.user_id) %>
 					<br>
 					<hr>
 				<% end %>
-			<% elsif @draft_page > 1 %>
-				<% index_start_number_2 = (@draft_page - 1) * 20 %>
-				<% @draft_feed.each_with_index do |l, ind| %>
-					<h4>#<%= (ind + 1) + index_start_number_2 %>&nbsp;&nbsp;<%= link_to l.title, user_listing_path(l.user_id, l.id) %></h4>
-					<p>Hosted by: <%= link_to l.user.name, user_path(l.user_id) %>
-					<br>
-					<hr>
-				<% end %>
-			<% end %>
+			
 
 
 		<p><%= paginate @draft_feed, param_name: :draft_page %></p>

@@ -11,6 +11,7 @@ class ListingsController < ApplicationController
 	end
 
 	def new
+		@current_listing = Listing.new
 	end
 
 	def create 
@@ -21,7 +22,10 @@ class ListingsController < ApplicationController
 
 	def show
 		@current_listing = Listing.find_by(user_id: params[:user_id], id: params[:id])
+	end
 
+	def edit
+		@current_listing = Listing.find_by(user_id: params[:user_id], id: params[:id])
 	end
 
 	def update
@@ -30,8 +34,18 @@ class ListingsController < ApplicationController
 		redirect_to user_listing_path(@draft_listing.user_id, @draft_listing.id)
 	end
 
+	def update_listing
+		@current_listing = Listing.find_by(user_id: params[:user_id], id: params[:id])
+		if current_user.id == @current_listing.user_id
+			@current_listing.update(listing_params)
+			redirect_to user_listing_path(current_user.id, @current_listing.id)
+		else 
+			redirect_to "/"
+		end
+	end
+
 	def listing_params 
-		params.require(:listing).permit(:title, :address, :description, :number_of_bed, :number_of_guest, :price, :property_type, :zipcode, :city, :state, :country, :number_of_room)
+		params.require(:listing).permit(:title, :address, :description, :number_of_bed, :number_of_guest, :price, :property_type, :zipcode, :city, :state, :country, :number_of_room, photos: [])
 	end
 
 end

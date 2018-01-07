@@ -11,7 +11,7 @@ user['password'] = 'asdf'
 
 
 ActiveRecord::Base.transaction do
-  60.times do 
+  20.times do 
     user['email'] = Faker::Internet.email
     user['name'] = Faker::Name.unique.name
     User.create(user)
@@ -24,7 +24,7 @@ uids = []
 User.all.each { |u| uids << u.id }
 
 ActiveRecord::Base.transaction do
-  2000.times do 
+  50.times do 
     listing['title'] = Faker::App.name
     listing['address'] = Faker::Address.street_address
     listing['number_of_bed'] = rand(1..10)
@@ -37,7 +37,7 @@ ActiveRecord::Base.transaction do
     listing['zipcode'] = Faker::Address.zip_code
     listing['price'] = rand(80..500)
     listing['description'] = Faker::Hipster.sentence
-
+    listing['status'] = rand(0..1)
     listing['user_id'] = uids.sample
 
     Listing.create(listing)

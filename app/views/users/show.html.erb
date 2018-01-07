@@ -1,13 +1,13 @@
-<% if signed_in? %>
-  <p>Signed in as:<%= link_to current_user.name, user_path(current_user.id) %></p>
-  <%= button_to "Sign out", sign_out_path, method: :delete %>
-<% else %>
-  <%= link_to "Sign in", sign_in_path %>
-<% end %>
+<p id="profile-pic"><%= image_tag @user.avatar.thumb %></p>
 <h1>This is your profile page</h1>
 <br>
 <h4>Name: <%= @user.name %></h4>
 <h4>Email: <%= @user.email %></h4>
+<% if signed_in? %>
+	<% if current_user.id == @user.id %>
+		<%= link_to "Edit", edit_user_path(current_user.id), class:"btn btn-primary" %>
+	<% end %>
+<% end %>
 
 <% if @user.listings.count != 0 %>
 	<h3><%= link_to "View all your listings",  user_listings_path(@user.id) %></h3>

@@ -1,0 +1,28 @@
+ 
+<h2>Edit your profile here</h2>
+<br>
+<%= form_for @user, url: user_path(@user.id), method: :put do |form|  %>
+
+    <div class="text_field">
+		<%= form.label :name %>
+		<%= form.text_field :name, class:"form-control"%>
+	</div>
+
+	<div class="text-field">
+	  <%= form.label :email %>
+	  <%= form.text_field :email, type: 'email', class:"form-control" %>
+	</div>
+
+	<div class="password-field">
+		<%= form.label :password %>
+		<%= form.password_field :password, class:"form-control" %>
+	</div>
+
+	<h5>Edit profile picture:</h5> 
+	<div id="profile-pic"><p><%= image_tag @user.avatar.thumb %></p></div>
+	<p><%= form.file_field :avatar %> OR remove avatar <%= form.check_box :remove_avatar %></p>
+	
+	<%= form.submit value:"Update", class:"btn btn-primary" %>
+
+<% end %>
+

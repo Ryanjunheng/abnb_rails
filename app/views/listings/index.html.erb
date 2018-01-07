@@ -2,18 +2,12 @@
 <h3><%= link_to @user.name, user_path(@user.id) %>'s Listings</h3>
 <br>
 <% if @listings.count != 0 and @listing_feed.count >= 1 %>
-	<% if @listing_page == 1 %>
+	
 		<% @listing_feed.each_with_index do |l, ind| %>
-			<h4>#<%= ind + 1 %>&nbsp;&nbsp;<%= link_to l.title, user_listing_path(l.user_id, l.id) %></h4>
+			<h4><%= link_to l.title, user_listing_path(l.user_id, l.id) %></h4>
 			<br>
 		<% end %>
-	<% elsif @listing_page > 1 %>
-		<% index_start_number_1 = @listing_page * 20 %>
-		<% @listing_feed.each_with_index do |l, ind| %>
-			<h4>#<%= (ind + 1) + index_start_number_1 %>&nbsp;&nbsp;<%= link_to l.title, user_listing_path(l.user_id, l.id) %></h4>
-			<br>
-		<% end %>
-	<% end %>
+	
 <% elsif @listings.count == 0 or @listing_feed.count == 0 %>
 	<h5>Listings are either pending for approval or there is no listing yet.</h5>
 <% end %>
@@ -28,18 +22,12 @@
 	<h3>Listings pending for approval</h3>
 	<br>
 	<% if @draft_feed.count >= 1 %>
-		<% if @draft_page == 1 %>
+		
 			<% @draft_feed.each_with_index do |l, ind| %>
-				<h4>#<%= ind + 1 %>&nbsp;&nbsp;<%= link_to l.title, user_listing_path(l.user_id, l.id) %></h4>
+				<h4><%= link_to l.title, user_listing_path(l.user_id, l.id) %></h4>
 				<br>
 			<% end %>
-		<% elsif @draft_page > 1 %>
-			<% index_start_number_2 = (@draft_page - 1) * 20 %>
-			<% @draft_feed.each_with_index do |l, ind| %>
-				<h4>#<%= (ind + 1) + index_start_number_2 %>&nbsp;&nbsp;<%= link_to l.title, user_listing_path(l.user_id, l.id) %></h4>
-				<br>
-			<% end %>
-		<% end %>
+		
 	<% elsif @draft_feed.count == 0 %>
 		<h5>There is no pending listings</h5>
 	<% end %>
