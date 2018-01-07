@@ -1,4 +1,7 @@
-
+<% if @errors.present? %>
+  <p>Unable to book! <%= @errors.first %></p>
+  <br>
+<% end %>
 <div class="container">
   <h2>Gallery</h2>
   <div id="myCarousel" class="carousel slide" data-ride="carousel">

@@ -9,7 +9,11 @@ class BookingsController < ApplicationController
 		@current_listing = Listing.find_by(user_id: params[:user_id], id: params[:listing_id])
 		@booking = current_user.bookings.new(booking_params)
 		if @booking.save
+			flash[:info] = "Booking confirmed!"
 			redirect_to user_listing_path(@current_listing.user_id, @current_listing.id)
+		else
+			@errors = @booking.errors.full_messages
+			render "listings/show"
 		end
 	end
 

@@ -1,5 +1,6 @@
 <h3>Book now!</h3>
 <br>
+
 <%= form_for @booking, url: "/users/#{@current_listing.user_id}/listings/#{@current_listing.id}/bookings" do |f| %>
 	<%= f.hidden_field :user_id, value: current_user.id %>
 	<%= f.hidden_field :listing_id, value: @current_listing.id %>
