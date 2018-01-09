@@ -11,6 +11,6 @@
 
 	<p>Check out: <%= f.date_field :end_date %></p>
 
-	<%= f.submit "Submit booking" %>
+	<%= f.submit "Submit booking", data: { confirm: 'Confirm booking and proceed to payment?' } %>
 
 <% end %>

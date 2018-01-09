@@ -3,12 +3,15 @@ class Booking < ApplicationRecord
 	belongs_to :listing
 	validate :check_overlapping_dates
 	validate :check_max_guests
+	enum status: { unpaid: 0, paid: 1 }
 
 	def check_overlapping_dates
 		#compare this new booking with the existing bookings 
 		listing.bookings.each do |old_booking|
-			if overlap?(self, old_booking)
-				return errors.add(:The, "booking dates are conflicting with existing bookings!")
+			if self.id != old_booking.id
+				if overlap?(self, old_booking)
+					return errors.add(:overlapping_dates, "booking dates are conflicting with existing bookings!")
+				end
 			end
 		end
 	end 
@@ -20,7 +23,7 @@ class Booking < ApplicationRecord
 	def check_max_guests
 		max_guests = listing.number_of_guest
 		return if num_guest < max_guests
-		errors.add(:Max, "guests number exceeded!")
+		errors.add(:max_guests, "guests number exceeded!")
 	end
 
 	def total_price

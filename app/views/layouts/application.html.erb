@@ -9,12 +9,14 @@
   	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
     <link href="http://fonts.googleapis.com/css?family=Abel|Medula+One" rel="stylesheet" type="text/css" />
+    <script src="https://js.braintreegateway.com/web/3.6.3/js/client.min.js"></script>
+    <script src="https://js.braintreegateway.com/web/3.6.3/js/hosted-fields.min.js"></script>
 </head>
 <body>
   <%= render partial: "/layouts/navbar" %>
   <div id="flash">
     <% flash.each do |key, value| -%>
-      <div id="flash_<%= key %>"><%=h value %></div>
+      <div id="flash_<%= key %>", class="<%= flash_class(key) %>"><%=h value %></div>
     <% end %>
   </div>
 

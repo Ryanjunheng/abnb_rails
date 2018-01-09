@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'payment/new'
+
   root "home#index"
 
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
@@ -9,11 +11,13 @@ Rails.application.routes.draw do
       controller: "clearance/passwords",
       only: [:create, :edit, :update]
     resources :listings do
-      resources :bookings, only: [:destroy, :create, :new]
+      resources :bookings, only: [:destroy, :create, :new] do 
+        resources :payment
+      end
     end
   end
 
-
+  
   get "/sign_in" => "clearance/sessions#new", as: "sign_in"
   delete "/sign_out" => "sessions#destroy", as: "sign_out"
   get "/sign_up" => "clearance/users#new", as: "sign_up"

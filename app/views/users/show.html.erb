@@ -28,8 +28,9 @@
 	      	<th>Listing</th>
 	        <th>Number of guests</th>
 	        <th>Check in date</th>
-	        <th>Check in date</th>
+	        <th>Check out date</th>
 	        <th>Total price</th>
+	        <th>Payment status</th>
 	      </tr>
 	      <% @booking.each do |b| %>
 	        <tr>
@@ -38,7 +39,11 @@
 	          <td><%= b.start_date %></td>
 	          <td><%= b.end_date %></td>
 	          <td><%= b.total_price %></td>
+	          <td><%= b.status %></td>
 	          <td><%= link_to "Cancel Booking", user_listing_booking_path(b.user_id, b.listing_id, b.id), method: :delete, data: { confirm: 'Sure? This action cannot be reverted!' } %></td>
+	          <% if b.unpaid? %>
+	          	<td><%= link_to "Pay now", new_user_listing_booking_payment_path(b.user_id, b.listing_id, b.id) %></td>
+	          <% end %>
 	        </tr>
 	      <% end %>
 	    </table>
