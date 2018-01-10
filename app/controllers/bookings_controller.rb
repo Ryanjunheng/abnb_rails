@@ -7,9 +7,13 @@ class BookingsController < ApplicationController
 
 	def create
 		@current_listing = Listing.find_by(user_id: params[:user_id], id: params[:listing_id])
+
 		@booking = current_user.bookings.new(booking_params)
 		if @booking.save
-			flash[:notice] = "Booking confirmed!"
+			@customer = User.find(@booking.user_id)
+			@host = User.find(@current_listing.user_id)
+			BookingMailer.booking_email(@customer, @current_listing, @host).deliver_now
+			flash[:success] = "Booking confirmed!"
 			redirect_to user_listing_path(@current_listing.user_id, @current_listing.id)
 		else
 			@errors = @booking.errors.full_messages

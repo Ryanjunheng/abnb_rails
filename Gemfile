@@ -19,6 +19,7 @@ gem 'carrierwave', '~> 1.0'
 gem "mini_magick"
 gem 'fog'
 gem 'braintree'
+gem "letter_opener", :group => :development
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 gem 'jquery-rails'

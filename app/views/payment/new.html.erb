@@ -29,6 +29,7 @@
 var form = document.querySelector('#cardForm');
 var submit = document.querySelector("#submit-payment-btn");
 var authorization = '<%= @client_token %>';
+
 braintree.client.create({
   // Replace this with your own authorization.
   authorization: authorization

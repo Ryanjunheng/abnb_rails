@@ -10,7 +10,7 @@ class Booking < ApplicationRecord
 		listing.bookings.each do |old_booking|
 			if self.id != old_booking.id
 				if overlap?(self, old_booking)
-					return errors.add(:overlapping_dates, "booking dates are conflicting with existing bookings!")
+					return errors.add(:The, "booking dates are conflicting with existing bookings!")
 				end
 			end
 		end
@@ -22,8 +22,8 @@ class Booking < ApplicationRecord
 
 	def check_max_guests
 		max_guests = listing.number_of_guest
-		return if num_guest < max_guests
-		errors.add(:max_guests, "guests number exceeded!")
+		return if num_guest <= max_guests
+		errors.add(:Max, "guests number exceeded!")
 	end
 
 	def total_price
