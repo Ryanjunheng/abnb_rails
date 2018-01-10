@@ -1,0 +1,17 @@
+<h1>Hi, <%= @customer.name %>!</h1>
+
+    <h3>Greetings from Booking BnB! You have succeesfully booked <%= @place.title %>, hosted by: <%= @host.name %></h3>
+
+        <p>You can see details of your new reservation here: </p>
+        <ul>
+            <li>Listing name: <%= @place.title %></li>
+            <li>Total price: <%= @booking.total_price %></li>
+            <li>Booking number: <%= @booking.id %></li>
+            <li>Check In date: <%= @booking.start_date.to_s %></li>
+            <li>Check Out date: <%= @booking.end_date.to_s %></li>
+            <li>Number of guests: <%= @booking.num_guest %></li>
+            <li>Payment: <%= @booking.status %></li>
+        </ul>
+      
+      <h4>Please proceed to make payment at the reservation section in your profile if you haven't already. Thank you.</h4>
+      <p>Thank you for your reservation.</p>

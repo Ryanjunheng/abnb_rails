@@ -17,6 +17,7 @@ Rails.application.configure do
 
   config.cache_classes = false
 
+
   # Do not eager load code on boot.
   config.eager_load = false
 
@@ -26,6 +27,7 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_deliveries = true
   config.action_mailer.default :charset => "utf-8"
+  config.action_mailer.default_url_options = { host: 'localhost:3000' }
 
   # Enable/disable caching. By default caching is disabled.
   if Rails.root.join('tmp/caching-dev.txt').exist?

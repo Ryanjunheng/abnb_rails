@@ -12,7 +12,8 @@ class BookingsController < ApplicationController
 		if @booking.save
 			@customer = User.find(@booking.user_id)
 			@host = User.find(@current_listing.user_id)
-			BookingMailer.booking_email(@customer, @current_listing, @host).deliver_now
+			BookingJob.perform_later(@customer, @current_listing, @booking, @host)
+			BookingJob.perform_later(@customer, @current_listing, @booking, @host)
 			flash[:success] = "Booking confirmed!"
 			redirect_to user_listing_path(@current_listing.user_id, @current_listing.id)
 		else
