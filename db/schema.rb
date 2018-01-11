@@ -12,19 +12,22 @@
 
 ActiveRecord::Schema.define(version: 20180108134224) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "authentications", force: :cascade do |t|
     t.string "uid"
     t.string "token"
     t.string "provider"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_authentications_on_user_id"
   end
 
   create_table "bookings", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "listing_id"
+    t.bigint "user_id"
+    t.bigint "listing_id"
     t.date "start_date"
     t.date "end_date"
     t.integer "num_guest"
@@ -35,10 +38,43 @@ ActiveRecord::Schema.define(version: 20180108134224) do
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
-# Could not dump table "listings" because of following StandardError
-#   Unknown type 'json' for column 'photos'
+  create_table "listings", force: :cascade do |t|
+    t.string "title"
+    t.string "address"
+    t.string "description"
+    t.string "property_type"
+    t.string "zipcode"
+    t.string "city"
+    t.string "state"
+    t.string "country"
+    t.integer "number_of_bed"
+    t.integer "number_of_guest"
+    t.integer "number_of_room"
+    t.integer "price"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "status", default: 0
+    t.json "photos"
+    t.index ["user_id"], name: "index_listings_on_user_id"
+  end
 
-# Could not dump table "users" because of following StandardError
-#   Unknown type 'json' for column 'avatar'
+  create_table "users", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.string "email", null: false
+    t.string "encrypted_password", limit: 128
+    t.string "confirmation_token", limit: 128
+    t.string "remember_token", limit: 128, null: false
+    t.integer "role", default: 0
+    t.json "avatar"
+    t.index ["email"], name: "index_users_on_email"
+    t.index ["remember_token"], name: "index_users_on_remember_token"
+  end
 
+  add_foreign_key "authentications", "users"
+  add_foreign_key "bookings", "listings"
+  add_foreign_key "bookings", "users"
+  add_foreign_key "listings", "users"
 end
