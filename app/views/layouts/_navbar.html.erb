@@ -34,10 +34,12 @@
 
         </div>
 
-        <h4>OR</h4>
+        <hr>
   
         <% if !signed_in? %>
-          <%= link_to "Sign in with Facebook", "/auth/facebook" %>
+          <p><%= link_to "Sign in with Facebook", "/auth/facebook" %></p>
+          <h4>OR</h4>
+          <p><%= link_to "Sign in with Google", "/auth/google_oauth2" %></p>
         <% end %>
 
       </div>

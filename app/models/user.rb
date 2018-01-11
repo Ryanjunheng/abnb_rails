@@ -15,6 +15,7 @@ class User < ApplicationRecord
      user = self.create!(
       name: auth_hash["extra"]["raw_info"]["name"],
        email: auth_hash["extra"]["raw_info"]["email"],
+       remote_avatar_url: auth_hash["info"]["image"],
        password: SecureRandom.hex(16)
      )
      user.authentications << authentication

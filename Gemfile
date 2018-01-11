@@ -21,6 +21,7 @@ gem 'fog'
 gem 'braintree'
 gem "letter_opener", :group => :development
 gem "sidekiq"
+gem 'omniauth-google-oauth2'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 gem 'jquery-rails'
