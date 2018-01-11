@@ -1,0 +1,17 @@
+<h1>Hi, <%= @host.name %>!</h1>
+
+    <h3>Congratulations! <%= @customer.name %> has booked your place: <%= @place.title %></h3>
+
+        <p>You can see details of your new reservation here: </p>
+        <ul>
+            <li>Listing name: <%= @place.title %></li>
+            <li>Total price: <%= @booking.total_price %></li>
+            <li>Booking number: <%= @booking.id %></li>
+            <li>Check In date: <%= @booking.start_date.to_s %></li>
+            <li>Check Out date: <%= @booking.end_date.to_s %></li>
+            <li>Number of guests: <%= @booking.num_guest %></li>
+            <li>Payment: <%= @booking.status %></li>
+        </ul>
+      
+      
+      <p>Thank you for hosting on ABnB</p>

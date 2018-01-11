@@ -1,0 +1,34 @@
+<h1><%= @welcome_message %></h1>
+
+<br>
+<hr>
+<h3>Listing feed</h3>
+<br>
+
+	<% @listing_feed.each_with_index do |l, ind| %>	
+		<h4><%= link_to l.title, user_listing_path(l.user_id, l.id) %></h4>
+		<p>Hosted by: <%= link_to l.user.name, user_path(l.user_id) %>
+		<br>
+		<hr>
+	<% end %>
+
+
+<p><%= paginate @listing_feed, param_name: :listing_page %></p>
+<br>
+<hr>
+<% if signed_in? %>
+	<% if current_user.superadmin? %>
+		<h3>Draft listing awaiting approval</h3>
+		<br>
+				<% @draft_feed.each_with_index do |l, ind| %>
+					<h4><%= link_to l.title, user_listing_path(l.user_id, l.id) %></h4>
+					<p>Hosted by: <%= link_to l.user.name, user_path(l.user_id) %>
+					<br>
+					<hr>
+				<% end %>
+			
+
+
+		<p><%= paginate @draft_feed, param_name: :draft_page %></p>
+	<% end %>
+<% end %>

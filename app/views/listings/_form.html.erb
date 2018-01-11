@@ -1,0 +1,14 @@
+    <p>What is the name of your place? <%= form.text_field :title %></p>
+    <p>What is the type of the property?(Please choose the closest possible) <%= form.select :property_type, options_for_select(["House","Entire floor","Condominium","Villa","Townhouse","Castle","Treehouse","Igloo","Yurt","Cave","Chalet","Hut","Tent"]) %></p>
+    <p>Tell us more about your place <%= form.text_area :description, rows: 5, cols: 100%></p>
+    <p>How many rooms <%= form.select :number_of_room, options_for_select([1,2,3,4,5,6,7,8,9,10], @current_listing.number_of_room)%></p>
+    <p>How many beds? <%= form.select :number_of_bed, options_for_select([1,2,3,4,5,6,7,8,9,10], @current_listing.number_of_bed)%></p>
+    <p>Suitable for how many guests? <%= form.select :number_of_guest, options_for_select([1,2,3,4,5,6,7,8,9,10,11,12], )%></p>
+    <p>Where is your place located? <%= form.text_area :address, rows: 1, cols: 100%></p>
+    <p>Zipcode? <%= form.text_field :zipcode %></p>
+    <p>City? <%= form.text_field :city %></p>
+    <p>State? <%= form.text_field :state %></p>
+    <p>Country? <%= form.text_field :country %></p>
+   
+    <p>What is your listing price? <%= form.text_field :price %></p>
+    <p>Showcase your house <%= form.file_field :photos, multiple:true %></p>

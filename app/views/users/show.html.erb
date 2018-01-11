@@ -1,0 +1,54 @@
+<p id="profile-pic"><%= image_tag @user.avatar.thumb %></p>
+<h1>This is your profile page</h1>
+<br>
+<h4>Name: <%= @user.name %></h4>
+<h4>Email: <%= @user.email %></h4>
+<% if signed_in? %>
+	<% if current_user.id == @user.id %>
+		<%= link_to "Edit", edit_user_path(current_user.id), class:"btn btn-primary" %>
+	<% end %>
+<% end %>
+
+<% if @user.listings.count != 0 %>
+	<h3><%= link_to "View all your listings",  user_listings_path(@user.id) %></h3>
+<% else %>
+	<h3>You have no listing yet.</h3> 
+	<% if signed_in? && current_user.id == @user.id %>
+		<h3><%= link_to "Become a host today!", new_user_listing_path(current_user.id) %></h3>
+		<br>
+	<% end %>
+<% end %>
+<% if signed_in? %>
+	<% if current_user.id == @user.id %>
+	<hr>
+	<h2>Booking:</h2>
+	<% if current_user.bookings != [] %>
+	    <table>
+	      <tr>
+	      	<th>Listing</th>
+	        <th>Number of guests</th>
+	        <th>Check in date</th>
+	        <th>Check out date</th>
+	        <th>Total price</th>
+	        <th>Payment status</th>
+	      </tr>
+	      <% @booking.each do |b| %>
+	        <tr>
+	        	<td><%= link_to b.listing.title, user_listing_path(b.listing.user_id, b.listing_id) %></td>
+	          <td><%= b.num_guest %></td>
+	          <td><%= b.start_date %></td>
+	          <td><%= b.end_date %></td>
+	          <td><%= b.total_price %></td>
+	          <td><%= b.status %></td>
+	          <td><%= link_to "Cancel Booking", user_listing_booking_path(b.user_id, b.listing_id, b.id), method: :delete, data: { confirm: 'Sure? This action cannot be reverted!' } %></td>
+	          <% if b.unpaid? %>
+	          	<td><%= link_to "Pay now", new_user_listing_booking_payment_path(b.user_id, b.listing_id, b.id) %></td>
+	          <% end %>
+	        </tr>
+	      <% end %>
+	    </table>
+	  <% else %>
+	    <p>No reservation has been made yet</p>
+	  <% end %>
+	<% end %>
+<% end %>

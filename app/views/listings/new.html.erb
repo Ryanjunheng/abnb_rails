@@ -1,0 +1,11 @@
+
+
+<h1>Create new listings here!</h1>
+
+<%= form_for @current_listing, url: user_listings_path(current_user.id) do |f| %>
+    
+    <%= render partial: "/listings/form", object: f %>
+     
+    
+    <%= f.submit 'Submit' %>
+<% end %>

@@ -1,2 +1,46 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "home";
+@import "payment";
+
+body {
+	margin: 50px 0 0 0;
+}
+
+#brand {
+	font-family: 'Pacifico', cursive;
+	font-size: 30px;
+}
+
+.modal-btn {
+	cursor:pointer;
+}
+
+#sign-in-as {
+	position: relative;
+	top: 15px;
+}
+
+#myCarousel {
+	width: 100%;
+}
+
+.container {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+#sign-in-as img {
+	border-radius: 50%;
+}
+
+#profile-pic img {
+	border-radius: 10px;
+}
+
+
+.img-responsive {
+	margin: 0;
+	width: 100%;
+}
