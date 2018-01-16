@@ -3,17 +3,230 @@
 @import "home";
 @import "payment";
 
+* {
+	box-sizing: border-box;
+}
+
 body {
-	margin: 50px 0 0 0;
+	margin: 70px 0 0 0;
+}
+
+/* Homepage */
+
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 300%; 
+  }
+
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+}
+
+#joke {
+	animation-duration: 10s;
+  	animation-name: slidein;
+  	animation-iteration-count: infinite;
+  	animation-direction: alternate;
+}
+
+/* Navbar section */
+
+#navbar-override {
+	border: 1px solid black;
+	margin: 5px 5px 5px 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-right: 15px;
+	padding-left: 20px;
+	opacity: 1;
+	z-index: 100;
+	background-color: white;
 }
 
 #brand {
-	font-family: 'Pacifico', cursive;
+	font-family: 'Raleway';
+	font-size: 23px;
+	letter-spacing: 3px;
+	text-decoration: none;
+	color: black;
+}
+
+.form-group form {
+	position: relative;
+	right: 70%;
+	width: 170%;
+}
+
+#country {
+	width: 70%;
+}
+#sign-up-title, #login-title, #profile-title, #become-host-title, #sign-out-title {
+	font-family: 'Raleway';
+	font-size: 16px;
+	letter-spacing: 3px;
+	text-decoration: none;
+	color: black;
+	display: inline-block;
+}
+
+#sign-up-title:hover, #login-title:hover, #profile-title:hover, #become-host-title:hover, #sign-out-title:hover {
+	background-color: white
+}
+
+
+#sign-up-title::after, #login-title::after, #brand::after, #profile-title::after, #become-host-title::after, #sign-out-title::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 1.5px;
+    background: #000;
+    transition: width .3s;
+}
+
+#sign-up-title:hover::after, #login-title:hover::after, #brand:hover::after, #profile-title:hover::after, #become-host-title:hover::after, #sign-out-title:hover::after {
+    width: 100%;
+}
+
+#login-close-btn:focus {
+	outline: 0;
+}
+
+/* Modal section */
+
+#sign-up-modal {
+	font-family: 'Raleway';
 	font-size: 30px;
+	letter-spacing: 3px;
+	text-decoration: none;
+	color: black;
+}
+
+.modal-header {
+	border-bottom: 1px solid black;
+}
+
+.close {
+	font-size: 35px;
+	font-weight: lighter;
+	opacity: 1;
+	line-height: none;
+}
+
+#modal-content-override {
+	border: 1px solid black;
+	margin: 5px 5px 5px 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-radius: 0;
+	padding-left: 25px;
+	padding-right: 25px;
+	
+}
+
+.modal-body {
+	padding: 0;
+	margin-top: 15px;
+	margin-bottom: 20px;
+
+}
+
+.sign-up-form-label {
+	font-weight: normal;
+	font-family: 'Work Sans';
+	margin-top: 10px;
+	font-size: 20px;
+}
+
+.form-control {
+	height: 40px;
+	border: 1px solid black;
+	border-radius: 0;
+	font-size: 16px;
+	font-family: "Work Sans";
+	letter-spacing: 1px;
+}
+
+#image-upload-btn {
+	font-family: "Work Sans";
+	font-size: 16px;
+	border: 1px solid black;
+	border-radius: 0;
+	color: black;
+	background-color: white;
+	-webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+#image-upload-btn:hover {
+	background-color: black;
+	color: white;
+}
+
+#sign-up-btn {
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+	font-family: "Work Sans";
+	font-size: 16px;
+	border: 1px solid black;
+	border-radius: 0;
+	color: black;
+	background-color: white;
+	-webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+#sign-up-btn:hover {
+	background-color: black;
+	color: white;
+}
+
+.social-login {
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+	border: 1px solid black;
+	border-radius: 0;
+	text-decoration: none;
+	font-family: "Work Sans";
+	font-size: 16px;
+	width: 88%;
+	color: black;
+}
+
+.modal-footer {
+	border-top: 1px solid black;
+	text-align: center;
+	padding-top: 20px;
+}
+
+.modal-footer p {
+	font-family: "Work Sans";
+	font-size: 16px;
+}
+
+.modal-footer p a {
+	cursor: pointer;
 }
 
 .modal-btn {
 	cursor:pointer;
+}
+
+.forgot-password-link {
+	font-family: "Work Sans";
+	font-size: 16px;
+}
+
+.other-links {
+	text-align: center;
+	margin-top: 10px;
+	margin-bottom: -5px;
 }
 
 #sign-in-as {
@@ -35,12 +248,121 @@ body {
 	border-radius: 50%;
 }
 
+#sign-in-as {
+	font-family: 'Raleway';
+	font-size: 16px;
+	margin-right: 25px;
+	text-decoration: none;
+	color: black;
+	display: inline-block;
+}
+
+#sign-in-as span {
+	position: relative;
+	bottom: 5px;
+}
+
+#no-avatar {
+	position: relative;
+	top:-2px;
+}
+
 #profile-pic img {
 	border-radius: 10px;
 }
-
 
 .img-responsive {
 	margin: 0;
 	width: 100%;
 }
+
+/* Sign up page */
+
+.sign-up-page-container {
+	width: 60%;
+	border: 1px solid black;
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+	margin-top: 100px;
+}
+
+#clearance-signup-page {
+	padding: 20px;
+}
+
+.sign-up-page {
+	margin-top: 5px;
+	margin-bottom: 10px
+}
+
+.signup-page-footer {
+	text-align: center;
+	padding-top: 5px;
+	padding-bottom: 5px; 
+	margin-top: 10px;
+}
+
+.signup-page-footer p {
+	font-family: "Work Sans";
+	font-size: 16px;
+
+	a {
+		cursor: pointer;
+	}
+}
+
+/* Sign in page */
+
+.sign-in-page {
+	margin-top: 25px;
+}
+
+#sign-in-modal {
+	font-family: 'Raleway';
+	font-size: 30px;
+	letter-spacing: 3px;
+	text-decoration: none;
+	color: black;
+	margin-bottom: 9px;
+}
+
+/* New Listing page */
+
+#new-listing-container {
+	width: 70%;
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+	border: 1px solid black;
+	margin-top: 100px;
+	padding: 30px;
+	margin-bottom: 30px;
+}
+
+.new-listing-title {
+	font-family: 'Raleway';
+	font-size: 30px;
+	letter-spacing: 3px;
+	text-decoration: none;
+	color: black;
+	padding-bottom: 20px;
+	border-bottom: 1px solid black;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

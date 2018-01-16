@@ -1,0 +1,37 @@
+<h1>Advanced Search</h1>
+
+<%= form_for @search do |s| %>
+
+	<%= s.label :title %>
+	<%= s.text_field :title %>
+
+	<br>
+
+	<%= s.label :property_type, "Property type" %>
+	<%= s.select :property_type, options_for_select(@property_type), include_blank: true %>
+
+	<br>
+
+	<%= s.label :city %>
+	<%= s.text_field :city %>
+
+	<br>
+
+	<%= s.label :state %>
+	<%= s.text_field :state %>
+
+	<br>
+
+	<%= s.label :country %>
+	<%= s.text_field :country %>
+
+	<br>
+
+	<%= s.label :price %>
+	<%= s.text_field :price %>
+
+	<br>
+
+	<%= s.submit 'Search' %>
+
+<% end %>

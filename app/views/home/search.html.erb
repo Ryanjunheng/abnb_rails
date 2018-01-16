@@ -1,0 +1,10 @@
+<% if params[:country] %>
+	<h3>Results for: <%= params[:country] %></h3>
+	<br>
+	<% @listings.each do |l| %>
+		<h4><%= l.title %></h4>
+		
+	<% end %>
+<% else %>
+	<h3>No records found</h3>
+<% end %>

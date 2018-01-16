@@ -1,14 +1,52 @@
-    <p>What is the name of your place? <%= form.text_field :title %></p>
-    <p>What is the type of the property?(Please choose the closest possible) <%= form.select :property_type, options_for_select(["House","Entire floor","Condominium","Villa","Townhouse","Castle","Treehouse","Igloo","Yurt","Cave","Chalet","Hut","Tent"]) %></p>
-    <p>Tell us more about your place <%= form.text_area :description, rows: 5, cols: 100%></p>
-    <p>How many rooms <%= form.select :number_of_room, options_for_select([1,2,3,4,5,6,7,8,9,10], @current_listing.number_of_room)%></p>
-    <p>How many beds? <%= form.select :number_of_bed, options_for_select([1,2,3,4,5,6,7,8,9,10], @current_listing.number_of_bed)%></p>
-    <p>Suitable for how many guests? <%= form.select :number_of_guest, options_for_select([1,2,3,4,5,6,7,8,9,10,11,12], )%></p>
-    <p>Where is your place located? <%= form.text_area :address, rows: 1, cols: 100%></p>
-    <p>Zipcode? <%= form.text_field :zipcode %></p>
-    <p>City? <%= form.text_field :city %></p>
-    <p>State? <%= form.text_field :state %></p>
-    <p>Country? <%= form.text_field :country %></p>
+    <%= form.label :title, 'What is the name of your place?', class:"sign-up-form-label" %>
+    <%= form.text_field :title, class:"form-control" %>
+    <br>
+    <%= form.label :property_type, 'What is the type of the property?(Please choose the closest possible)', class:"sign-up-form-label" %>
+    <%= form.select :property_type, options_for_select(["House","Entire floor","Condominium","Villa","Townhouse","Castle","Treehouse","Igloo","Yurt","Cave","Chalet","Hut","Tent"], class:"form-control") %>
+    <br>
+    <%= form.label :description, 'Tell us more about your place', class:"sign-up-form-label" %>
+    <%= form.text_area :description, rows: 5, cols: 100, class:"form-control"%>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <%= form.label :number_of_room, 'How many rooms', class:"sign-up-form-label" %>
+                <%= form.select :number_of_room, options_for_select([1,2,3,4,5,6,7,8,9,10], @current_listing.number_of_room), class:"form-control"%>
+            </div>
+            <div class="col-md-3">     
+                <%= form.label :number_of_bed, 'How many beds?', class:"sign-up-form-label" %>
+                <%= form.select :number_of_bed, options_for_select([1,2,3,4,5,6,7,8,9,10], @current_listing.number_of_bed), class:"form-control"%>
+            </div>
+            <div class="col-md-5">
+                <%= form.label :number_of_guest, 'Suitable for how many guests?', class:"sign-up-form-label" %>
+                <%= form.select :number_of_guest, options_for_select([1,2,3,4,5,6,7,8,9,10,11,12], @current_listing.number_of_guest), class:"form-control"%>
+            </div>
+        </div>
+    </div>
+    <br>
+    <%= form.label :address, 'Where is your place located?', class:"sign-up-form-label" %>
+    <%= form.text_area :address, rows: 3, cols: 100, class:"form-control"%>
+
+    <%= form.label :zipcode, 'Zipcode', class:"sign-up-form-label" %>
+    <%= form.text_field :zipcode, class:"form-control" %>
+
+    <%= form.label :city, 'City', class:"sign-up-form-label" %>
+    <%= form.text_field :city, class:"form-control" %>
+
+    <%= form.label :state, 'State', class:"sign-up-form-label" %>
+    <%= form.text_field :state, class:"form-control" %>
+
+    <%= form.label :country, 'Country', class:"sign-up-form-label" %>
+    <%= form.text_field :country, class:"form-control" %>
    
-    <p>What is your listing price? <%= form.text_field :price %></p>
-    <p>Showcase your house <%= form.file_field :photos, multiple:true %></p>
+    <%= form.label :price, 'Price/night', class:"sign-up-form-label" %>
+    <%= form.text_field :price, class:"form-control" %>
+    <br>
+    <label class="btn btn-primary" id="image-upload-btn">
+      Upload picture
+        <span style="display:none;">
+            <%= form.file_field :photos, multiple:true %>
+        </span>
+    </label>
+    
+    

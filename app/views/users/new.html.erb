@@ -1,21 +1,35 @@
-<div id="clearance" class="sign-up">
-  <h2><%= t(".title") %></h2>
+<div class="sign-up-page-container">
+<div id="clearance-signup-page" class="sign-up">
+  <h4 class="text-center" id="sign-up-modal">Get Started</h4>
+          <%= form_for User.new do |form| %>
+            <%= render partial: '/users/form', object: form %>
+            <br>
+              <div class="submit-field">
+                <%= form.submit 'Sign Up', id:"sign-up-btn", class:"btn" %>
+              </div>
 
-  <%= form_for @user do |form| %>
-    <%= render partial: '/users/form', object: form %>
 
-    <div class="submit-field">
-      <%= form.submit %>
-    </div>
+          <% end %>
+        </div>
+          <div style="width: 95%; height: 20px; border-bottom: 1px solid black; text-align: center; margin-top: 6px; position: relative; left: 50%; transform: translateX(-50%);">
+            <span style="font-size: 20px; background-color: white; padding: 0 10px; font-family:'Raleway'; position:relative; top:3px;">
+                or <!--Padding is optional-->
+            </span>
+          </div>
+          <br>
+        <% if !signed_in? %>
+        <div class="container sign-up-page">
+          <div class="row">
+            <div class="col-md-6"><%= link_to raw('<i class="fa fa-facebook-official" aria-hidden="true"></i> Sign up with Facebook'), "/auth/facebook", class:"btn social-login" %></div>
+            <div class="col-md-6"><%= link_to raw('<i class="fa fa-google" aria-hidden="true"></i> Sign up with Google'), "/auth/google_oauth2", class:"btn social-login" %></div>
+          </div>
+        </div>
+        <% end %>
 
-    <div class="other-links">
-      <h5>Have an account?  </h5><%= link_to t(".sign_in"), sign_in_path %>
-    </div>
+        <div class="signup-page-footer">
+          <p>Already have an account? <%= link_to "Log in", sign_in_path %></p>
+        </div>
 
-    
-  <% end %>
-</div>
-<h4>OR</h4>
-<% if !signed_in? %>
-  <%= link_to "Sign in with Facebook", "/auth/facebook" %>
-<% end %>
+      </div>
+      
+   

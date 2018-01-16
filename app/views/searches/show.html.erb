@@ -1,0 +1,17 @@
+<h1>Search Result</h1>
+
+<% if @search.search_listings.empty? %>
+
+	<p>No record found!</p>
+
+<% else %>
+
+	<% @search.search_listings.each do |l| %>
+		<br>
+		<h1><%= l.title %></h1>
+		<p><%= l.property_type %></p>
+	<% end %>
+
+<% end %>
+
+<p><%= link_to "Back", new_search_path %></p>

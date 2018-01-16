@@ -5,4 +5,6 @@ class Listing < ApplicationRecord
 	has_many :bookings, dependent: :destroy
 	serialize :photos, Array
 	mount_uploaders :photos, PhotoUploader
+
+	
 end

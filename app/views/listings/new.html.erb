@@ -1,11 +1,14 @@
 
-
-<h1>Create new listings here!</h1>
+<div id="new-listing-container">
+<h4 class="text-center new-listing-title">Create new listings here!</h4>
+<br>
 
 <%= form_for @current_listing, url: user_listings_path(current_user.id) do |f| %>
     
     <%= render partial: "/listings/form", object: f %>
      
-    
-    <%= f.submit 'Submit' %>
+    <br>
+    <br>
+    <%= f.submit 'Submit', id:"sign-up-btn", class:"btn" %>
 <% end %>
+</div>
